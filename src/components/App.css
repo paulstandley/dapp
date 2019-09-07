@@ -5,7 +5,8 @@
 }
 
 body {
-  background: rgba(223, 215, 215, 0.541);
+  background: rgba(236, 230, 230, 0.541);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 nav {
@@ -14,10 +15,15 @@ nav {
 }
 
 header {
-  padding: 0.2rem 2rem;
+  padding: 0.4rem 2rem;
   font-size: 3rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   background-color: rgb(124, 112, 108);
   color: aliceblue;
   border: 0.2rem rgb(172, 171, 171) ridge;
+}
+
+img {
+  width: 30%;
+  height: 40%;
 }
