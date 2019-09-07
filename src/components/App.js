@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import logo from '../logo.png';
+import logo1 from '../components/img/logo1.png';
 import './App.css';
 
 class App extends Component {
+  onCapure = (evt) => {
+    evt.preventDefault();
+    // Prosess file for IPFS
+    const file = evt.target.files[0];
+    const reader = new window.FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onloadend = () => {
+      console.log("bufferd", Buffer(reader.result));
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -29,12 +40,12 @@ class App extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src={logo} className="App-logo" alt="logo" />
+                  <img src={logo1} className="App-logo" alt="logo" />
                 </a>
                 <p>&nbsp;</p>
                 <h2>Change meame</h2>
                 <form className="form">
-                  <input type="file" />
+                  <input type="file" onChange={this.onCapure} />
                   <input type="submit" />
                 </form>
               </div>
