@@ -4,8 +4,20 @@
   box-sizing: border-box;
 }
 
+body {
+  background: rgba(223, 215, 215, 0.541);
+}
+
+nav {
+  background-color: rgb(124, 112, 108);
+  border-bottom: 0.2rem rgb(172, 171, 171) ridge;
+}
+
 header {
-  padding: 1rem 6rem;
-  background-color: darksalmon;
+  padding: 0.2rem 2rem;
+  font-size: 3rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: rgb(124, 112, 108);
   color: aliceblue;
+  border: 0.2rem rgb(172, 171, 171) ridge;
 }

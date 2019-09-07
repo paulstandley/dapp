@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   onCapure = (evt) => {
     evt.preventDefault();
-    // Prosess file for IPFS
+    // Prosess file for IPFS // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
     const file = evt.target.files[0];
     const reader = new window.FileReader();
     reader.readAsArrayBuffer(file);
@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <nav className="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow">
           <a
             className="navbar-brand col-sm-3 col-md-2 mr-0"
             href="http://www.dappuniversity.com/bootcamp"
@@ -32,7 +32,7 @@ class App extends Component {
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
                 <header>
-                  <h1>Meme storage useing Ethereum Dapp With IPFS - Blockchain</h1>
+                  <h1>Meme storage useing Dapp With IPFS - Ethereum Blockchain</h1>
                 </header>
                 <p>&nbsp;</p>
                 <a
@@ -43,8 +43,8 @@ class App extends Component {
                   <img src={logo1} className="App-logo" alt="logo" />
                 </a>
                 <p>&nbsp;</p>
-                <h2>Change meame</h2>
-                <form className="form">
+                <h2>Change meme</h2>
+                <form className="form-group">
                   <input type="file" onChange={this.onCapure} />
                   <input type="submit" />
                 </form>
