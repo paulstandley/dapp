@@ -2,7 +2,9 @@
 
 ![dapp](dapp.jpg)
 
-## BASH
+## [53:25](https://www.youtube.com/watch?v=pTZVoqBUjvI&t=2829s)
+
+### BASH
 
 ```BASH
 

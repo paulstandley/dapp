@@ -19,11 +19,24 @@ header {
   font-size: 3rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   background-color: rgb(124, 112, 108);
-  color: aliceblue;
+  color: #fff;
   border: 0.2rem rgb(172, 171, 171) ridge;
 }
 
 img {
   width: 30%;
   height: 40%;
+}
+
+.input_file {
+  background: rgb(124, 112, 108);
+  color: #fff;
+  border: 0.2rem rgb(172, 171, 171) ridge;
+}
+
+.input_submit {
+  padding: 0.6rem;
+  background: rgb(124, 112, 108);
+  color: #fff;
+  border: 0.2rem rgb(172, 171, 171) ridge;
 }

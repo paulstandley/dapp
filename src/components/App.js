@@ -78,8 +78,8 @@ class App extends Component {
                   </div>
                   <div className="card-body">
                     <form  onSubmit={this.onSubmit} className="form-group">
-                      <input className="btn btn-info" type="file" onChange={this.onCapure} />
-                      <input className="btn btn-primary" type="submit" />
+                      <input className="btn input_file" type="file" onChange={this.onCapure} />
+                      <input className="btn input_submit" type="submit" />
                     </form>
                   </div>
                   <div className="card-footer">
