@@ -3,6 +3,7 @@ import Web3 from 'web3';
 import Navbar from './Navbar';
 import Header from './Header';
 import './App.css';
+import Meme from '../abis/Meme.json';
 
 const ipfsClient = require('ipfs-http-client');
 // leaving out arguments will defult to 
@@ -13,12 +14,34 @@ class App extends Component {
 
   async componentWillMount() {
     await this.loadWeb3();
+    await this.loadBlockchainData();
   }
 
+  async loadBlockchainData() {
+    const web3 = window.web3;
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    const networkId = await web3.eth.net.getId();
+    const networkData = await Meme.networks[networkId];
+    if(networkData) {
+      const abi = Meme.abi;
+      const address = networkData.address;
+      // Fetch contract
+      const contract = web3.eth.Contract(abi, address);
+      this.setState({ contract });
+      const memeHash = await contract.methods.get().call();
+      this.setState({ memeHash });
+    }else{
+      window.alert("Smart contract not deployed to detected network");
+    }
+  }
+  
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
+      account: '',
       buffer: null,
+      contract: null,
       memeHash: "QmawXUXYTABpiC6yzWXQzYbAN5h9mhKPHkTsorqAoL53We"
     };
   }
@@ -63,11 +86,10 @@ class App extends Component {
         console.error(error);
         return;
       }
-      console.log(result);
-      console.log(result[0].hash);
-      console.log(this.state.memeHash);
       // step 2 store files on state to display and blockchain
-
+      this.state.contract.methods.set(memeHash).send({ from: this.state.account }).then(() =>{
+        this.setState({ memeHash });
+      });
     });
   }
 
@@ -80,6 +102,8 @@ class App extends Component {
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
                 <Header />
+                <p>{this.state.account}</p>
+                <p>{this.state.memeHash}</p>
                 <p>&nbsp;</p>
                 <a
                   href="http://www.dappuniversity.com/bootcamp"
