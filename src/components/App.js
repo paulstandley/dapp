@@ -42,7 +42,8 @@ class App extends Component {
       account: '',
       buffer: null,
       contract: null,
-      memeHash: "QmawXUXYTABpiC6yzWXQzYbAN5h9mhKPHkTsorqAoL53We"
+      memeHash: "",
+      memeHashDefault: "QmawXUXYTABpiC6yzWXQzYbAN5h9mhKPHkTsorqAoL53We"
     };
   }
 
@@ -81,7 +82,7 @@ class App extends Component {
     ipfs.add(this.state.buffer, (error, result) => {
       console.log("Ipfs result", result);
       const memeHash = result[0].hash;
-      this.setState({ memeHash }); 
+      //this.setState({ memeHash }); 
       if(error) {
         console.error(error);
         return;
@@ -102,15 +103,13 @@ class App extends Component {
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
                 <Header />
-                <p>{this.state.account}</p>
-                <p>{this.state.memeHash}</p>
                 <p>&nbsp;</p>
                 <a
                   href="http://www.dappuniversity.com/bootcamp"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHash}`} className="App-logo" alt="no meme" />
+                  {this.state.memeHash ? <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHash}`} className="App-logo" alt="no meme" /> : <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHashDefault}`} className="App-logo" alt="no meme" />}
                 </a>
                 <p>&nbsp;</p>
                 <div className="card">
