@@ -5,6 +5,7 @@ import Header from './Header';
 import './App.css';
 import Meme from '../abis/Meme.json';
 
+const memeData = [];
 const ipfsClient = require('ipfs-http-client');
 // leaving out arguments will defult to 
 //const ipfs = ipfsClient('localhost', '5001', { protocol: 'http' });
@@ -82,7 +83,7 @@ class App extends Component {
     ipfs.add(this.state.buffer, (error, result) => {
       console.log("Ipfs result", result);
       const memeHash = result[0].hash;
-      //this.setState({ memeHash }); 
+      memeData.push(memeHash); 
       if(error) {
         console.error(error);
         return;
@@ -105,11 +106,12 @@ class App extends Component {
                 <Header />
                 <p>&nbsp;</p>
                 <a
-                  href="http://www.dappuniversity.com/bootcamp"
+                  href="http://www.paulstandley.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {this.state.memeHash ? <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHash}`} className="App-logo" alt="no meme" /> : <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHashDefault}`} className="App-logo" alt="no meme" />}
+                  {this.state.memeHash ? <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHash}`} className="App-logo" alt="no meme" /> 
+                  : <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHashDefault}`} className="App-logo" alt="no meme" />}
                 </a>
                 <p>&nbsp;</p>
                 <div className="card">
@@ -123,7 +125,7 @@ class App extends Component {
                     </form>
                   </div>
                   <div className="card-footer">
-                    <p></p>
+                    <p>You will need Crome and Metamask extionsion</p>
                   </div>
                 </div>
               </div>
